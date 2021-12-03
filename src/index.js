@@ -5,11 +5,13 @@ import App from './App';
 import { Provider } from 'react-redux';
 import store from './store';
 import reportWebVitals from './reportWebVitals';
+import Routing from './container/Routing'
 
 ReactDOM.render(
   <React.StrictMode>
-        <Provider store={store}>
-    <App />
+    <Provider store={store}>
+    <Routing/>
+    <App/>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

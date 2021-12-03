@@ -13,23 +13,21 @@ import { requestGet } from '../thunk/request';
 
 export default function LoginUser() {
     const dispatch = useDispatch();
+    let history = useHistory();
    
 
 const userinfo = useSelector((state)=>state.Login.user)
-
-
  const {email,password} = userinfo;
 
-
-    const InputChange = (event) =>{
-        dispatch(setdata({...userinfo,[event.target.name]:event.target.value}));
+const InputChange = (event) =>{
+  dispatch(setdata({...userinfo,[event.target.name]:event.target.value}));
   
-    };
-    const onSubmit = (event)=>{
-        console.log("login",userinfo)
-      
-        event.preventDefault();
-        dispatch(requestGet(userinfo));
+};
+const onSubmit = (event)=>{
+  console.log("login",userinfo)
+      history.push('/Dashboard');
+      event.preventDefault();
+     dispatch(requestGet(userinfo));
        
     };
  
@@ -38,7 +36,7 @@ const userinfo = useSelector((state)=>state.Login.user)
             <div>
 
                 <h3 className="heading">
-                    Login
+                  
                 </h3>
 
                 <Form onSubmit={onSubmit}>

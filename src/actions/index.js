@@ -8,7 +8,21 @@ export const TOKEN = 'TOKEN';
 export const setToken = (payload) => ({ type: TOKEN, payload });
 
 
+export const GET_PRODUCT = 'GET_PRODUCT';
+export const getproduct = (payload) => ({type:GET_PRODUCT,payload});
 
+export const GET_TRANSACTION = 'GET_TRANSACTION';
+export const gettransaction = (payload) => ({type:GET_TRANSACTION,payload});
+
+export const GET_LOCATION = 'GET_LOCATION';
+export const getlocation = (payload) => ({type:GET_LOCATION,payload});
+
+export const GET_FAMILIS= 'GET_FAMILIS';
+export const getfamilis = (payload) => ({type:GET_FAMILIS,payload});
+
+
+export const SET_NAV= 'SET_NAV';
+export const setnav = (payload) => ({type:SET_NAV,payload});
 
 
 
