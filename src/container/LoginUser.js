@@ -45,7 +45,7 @@ const onSubmit = (event)=>{
                         Email
                         </Form.Label>
                         <Col sm="6">
-                            <Form.Control type="text"  name ="email" placeholder="Email" value={email} onChange={InputChange} />
+                            <Form.Control type="email"  name ="email" placeholder="Email" value={email} onChange={InputChange} />
                         </Col>
                     </Form.Group>
                     

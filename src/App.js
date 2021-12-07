@@ -14,14 +14,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import LoginUser from './container/LoginUser';
 import { useHistory } from 'react-router-dom';
 import Button from 'react-bootstrap/Button'
-
+import Privaterouting from './component/Privaterouting'
 function App() {
- const history = useHistory();
-
-  const handleClick = (e) =>{
-    e.preventDefault()
-   history.push("/");
-  }
+ 
   return (
     <div className="App">
 
@@ -40,11 +35,12 @@ function App() {
 
         <Route path="/RegistrationForm" component={RegistrationForm} />
         <Route path="/LoginUser" component={LoginUser} />
-        <Route path="/Dashboard" component={Dashboard} />
-        <Route path="/Product" component ={Product}/>
-        <Route path="/Location" component ={Location}/>
-        <Route path="/Transaction" component ={Transaction}/>
-        <Route path="/Familis" component ={Familis}/>
+        
+        <Privaterouting path="/Dashboard" component={Dashboard} />
+        <Privaterouting path="/Product" component ={Product}/>
+        <Privaterouting path="/Location" component ={Location}/>
+        <Privaterouting path="/Transaction" component ={Transaction}/>
+        <Privaterouting path="/Familis" component ={Familis}/>
        
       </Router>
 

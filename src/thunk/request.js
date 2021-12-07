@@ -1,7 +1,5 @@
 import axios from "axios";
-import { getdata, getproduct ,getfamilis, getlocation, gettransaction, setdata } from "../actions";
-import { setToken } from "../actions";
-
+import { getdata ,getfamilis, getlocation, getproduct, gettransaction, setdata, setpagination } from "../actions";
 
 
 const client = axios.create({
@@ -11,9 +9,7 @@ const client = axios.create({
   const x =JSON.parse(localStorage.getItem("token"))
   client.defaults.headers.common['Authorization'] = `Bearer ${x}`;
 
- console.log("hjjfj",x);
-
-
+  console.log("hjjfj",x);
 
   export const requestPost = (userData) => async (dispatch) => {
     
@@ -21,38 +17,39 @@ const client = axios.create({
       const response = await client.post('/auth/register',userData);
       dispatch(getdata(response.data));
     } catch (err) {
-      // logs the error whatever error occured in try block
+
       console.log(err);
     }
   }
 
-
-
   export const requestGet = (userinfo) => async (dispatch) => {
-    
     try {
       const response = await client.post('/auth/login',userinfo)
      
      dispatch(setdata(response.data));
-     // dispatch(setToken(response.data.access_token))
+   
   
       const  data=JSON.stringify(response.data.access_token)
       localStorage.setItem('token',data);
      console.log(data)
           
     } catch (err) {
-      // logs the error whatever error occured in try block
+     
       console.log(err);
     }
   }
 
-
-
-  export const requestProduct = () => async (dispatch) => {
+  export const requestProduct = (prevFilters) => async (dispatch) => {
+    const params = {
+      _limit: prevFilters.limit,
+      _page: prevFilters.page,
+    }
     
     try {
-      const response = await client.get('/products');
-      dispatch(getproduct(response.data));
+      const response = await client.get('/products',{params});
+      dispatch(getproduct({records:response.data}));
+      console.log("hello",response)
+      // dispatch(setpagination(filters));
     } catch (err) {
       // logs the error whatever error occured in try block
       console.log(err);
@@ -60,18 +57,23 @@ const client = axios.create({
   }
 
 
-  export const requestLocation = () => async (dispatch) => {
+  export const requestLocation = (prevFilters) => async (dispatch) => {
+    const params = {
+      _limit: prevFilters.limit,
+      _page: prevFilters.page,
+    }
+    
     
     try {
-      const response = await client.get('/locations');
-      dispatch(getlocation(response.data));
+      const response = await client.get('/locations', {params});
+      dispatch(getlocation({recordsLocation:response.data}));
+      console.log("Location",response);
     } catch (err) {
       // logs the error whatever error occured in try block
       console.log(err);
     }
   }
 
-   
   export const requestTransaction = () => async (dispatch) => {
     
     try {

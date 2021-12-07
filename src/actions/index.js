@@ -24,8 +24,11 @@ export const getfamilis = (payload) => ({type:GET_FAMILIS,payload});
 export const SET_NAV= 'SET_NAV';
 export const setnav = (payload) => ({type:SET_NAV,payload});
 
+export const SET_PAGINATION= 'SET_PAGINATION';
+export const setpagination = (payload) => ({type:SET_PAGINATION,payload});
 
-
+export const LOCATION_PAGINATION= 'LOCATION_PAGINATION';
+export const paginationOnLocation = (payload) => ({type:LOCATION_PAGINATION,payload});
 
 
 

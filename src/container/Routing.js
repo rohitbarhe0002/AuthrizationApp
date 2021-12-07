@@ -12,16 +12,16 @@ export default function Routing() {
 
   {/* <Link to ="/RegistrationForm">Register</Link> */}
 
-  <Navbar bg="dark" variant="dark">
+   <Navbar bg="dark" variant="dark">
     <Container>
       <Navbar.Brand href="/">Navbar</Navbar.Brand>
       <Nav className="me-auto">
         <Nav.Link href="/RegistrationForm">signUp</Nav.Link>
     
       </Nav>
-      <Button varient="Success"  >Logout</Button>
+
     </Container>
-  </Navbar>
+  </Navbar> 
 
 </div>
         

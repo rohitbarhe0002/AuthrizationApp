@@ -5,12 +5,13 @@ import App from './App';
 import { Provider } from 'react-redux';
 import store from './store';
 import reportWebVitals from './reportWebVitals';
+import Privaterouting from './component/Privaterouting'
 import Routing from './container/Routing'
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-    <Routing/>
+<Routing/>
     <App/>
     </Provider>
   </React.StrictMode>,

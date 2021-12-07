@@ -1,7 +1,10 @@
-import { GET_LOCATION} from "../actions";
+import { GET_LOCATION, LOCATION_PAGINATION} from "../actions";
 
 const initialState = {
-   location:[],
+  location: {
+    recordsLocation: [],
+    filters: { page: 1, limit: 10},
+  },
    }
  
    
@@ -14,6 +17,17 @@ export default function locations (state = initialState, action) {
                 ...state,
                 location: action.payload,
               };
+              case LOCATION_PAGINATION:
+                return {
+                    location: {
+                      ...state.location,
+                      filters: {
+                        ...state.location.filters,
+                        ...action.payload,
+                  }
+                }
+              }
+                
               default:
             return state;
         }

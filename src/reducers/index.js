@@ -7,6 +7,7 @@ import Product from '../reducers/Product';
 import familis from './Familis';
 import transactions from './Transaction';
 import locations from './Location';
+
 const reducer= combineReducers({
     Registration,
     Login,

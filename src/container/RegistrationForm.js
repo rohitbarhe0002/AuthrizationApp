@@ -30,17 +30,18 @@ export default function RegistrationForm() {
     };
  
  return (
+     
      <div >
       <div>
         <h3 className="heading"></h3>
 
            <Form onSubmit={onSubmit}>
          <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
-                        <Form.Label column sm="2">
+                       <Form.Label column sm="2">
                         Email
                         </Form.Label>
                         <Col sm="6">
-                            <Form.Control type="text"  name ="email" placeholder="Email" value={email} onChange={InputChange} />
+                            <Form.Control type="email"  name ="email" placeholder="Email" value={email} onChange={InputChange} />
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword" >
