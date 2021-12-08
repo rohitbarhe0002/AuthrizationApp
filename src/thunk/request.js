@@ -1,15 +1,15 @@
 import axios from "axios";
-import { getdata ,getfamilis, getlocation, getproduct, gettransaction, setdata, setpagination } from "../actions";
+import { getdata ,getfamilis, getlocation, getproduct, gettransaction, setdata, setToken } from "../actions";
 
 
 const client = axios.create({
     baseURL: 'http://localhost:8000',
 
   });
-  const x =JSON.parse(localStorage.getItem("token"))
-  client.defaults.headers.common['Authorization'] = `Bearer ${x}`;
+  
+  client.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`;
 
-  console.log("hjjfj",x);
+  // console.log("hjjfj",x);
 
   export const requestPost = (userData) => async (dispatch) => {
     
@@ -28,10 +28,11 @@ const client = axios.create({
      
      dispatch(setdata(response.data));
    
-  
-      const  data=JSON.stringify(response.data.access_token)
-      localStorage.setItem('token',data);
-     console.log(data)
+     localStorage.setItem('token', response.data.access_token);
+     dispatch(setToken(response.data.access_token));
+    //   const  data=JSON.stringify(response.data.access_token)
+    //   localStorage.setItem('token',data);
+    //  console.log(data)
           
     } catch (err) {
      
@@ -58,15 +59,15 @@ const client = axios.create({
 
 
   export const requestLocation = (prevFilters) => async (dispatch) => {
-    const params = {
+    const params = ({
       _limit: prevFilters.limit,
       _page: prevFilters.page,
-    }
+    })
     
     
     try {
       const response = await client.get('/locations', {params});
-      dispatch(getlocation({recordsLocation:response.data}));
+      dispatch(getlocation({requestLocation:response.data}));
       console.log("Location",response);
     } catch (err) {
       // logs the error whatever error occured in try block
@@ -88,10 +89,22 @@ const client = axios.create({
   export const requestFamilis = () => async (dispatch) => {
     
     try {
-      const response = await client.get('/families');
+      const response = await client.get('/familis');
       dispatch(getfamilis(response.data));
     } catch (err) {
       // logs the error whatever error occured in try block
       console.log(err);
     }
   }
+
+
+  // // export const requestFamilis = () => async (dispatch) => {
+    
+  // //   try {
+  // //     const response = await client.get('/families');
+  // //     dispatch(getfamilis(response.data));
+  // //   } catch (err) {
+  // //     // logs the error whatever error occured in try block
+  // //     console.log(err);
+  // //   }
+  // }

@@ -9,43 +9,47 @@ import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import { useHistory } from 'react-router';
+import { useSelector } from 'react-redux';
 
 
 export default function Dashboard() {
+  const token = useSelector((state) => state.Token.token);
+
   let history = useHistory();
-  const handleClick =()=>{
+
+  const handleClick =() => {
   localStorage.removeItem("token");
   history.push('/LoginUser');
+  window.location.reload()
   }
-
     return (
         
+    
         <div>
-          <h1>Welcome to Dashboard</h1>
-        <Button varient ="success"onClick={handleClick}>Logout</Button>
-     <ul>
-        
-        <Link to ="product">Product</Link><br/> 
-        <Link to ="Location">Location</Link><br/>
-        <Link to ="Transaction">Transaction</Link><br/>
-        <Link to ="Familis">Familis</Link><br/>
+
+        {!token?(
+        <>
+      <Navbar bg="darknlkn hj" variant="dark"></Navbar>
+        <Nav.Link href="/RegistrationForm">signUp</Nav.Link> 
+        <Nav.Link href="/LoginUser">Login</Nav.Link></>):(
+        <>
+         <Navbar bg="warning" variant="dark">
+  <Container>
+  <Navbar.Brand href="/">Navbar</Navbar.Brand>
+  <Nav className="me-auto">
+        <Nav.Link href="/Product">Product</Nav.Link>
+        <Nav.Link href="/Location">Location</Nav.Link>
+        <Nav.Link href="/Transaction">Transaction</Nav.Link>
+        <Nav.Link href="/Family">Family</Nav.Link>
+        <Button varient="Success" type ="submit" onClick={handleClick}>Logout</Button>
+   </Nav>
+</Container>
+</Navbar> 
+
+        </>
+        )}
 
 
-        
-{/*      
-       <Navbar bg="warning" variant="dark">
-    <Container>
-      <Navbar.Brand href="/">Navbar</Navbar.Brand>
-      <Nav className="me-auto">
-        <Nav.Link href="/RegistrationForm">signUp</Nav.Link>
-      </Nav>
-      <Button varient="Success"  >Logout</Button>
-    </Container>
-  </Navbar> */}
-
-        
-      </ul>
-  
         
             
         </div>

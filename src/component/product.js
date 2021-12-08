@@ -7,7 +7,8 @@ import {Table} from 'react-bootstrap'
 import {Button} from 'react-bootstrap';
 export default function Product() {
    
-    
+   
+
     const selector  = useSelector((state) => state.Product.product.records) 
     const filters  = useSelector(state => state.Product.product.filters) 
 
@@ -63,8 +64,8 @@ export default function Product() {
               </tbody>
             ))}
      </Table>
-     <Button  varient="warning"disabled={filters.page === 1} onClick={() => handlePageChange(-1)}>Prev</Button>   
-     <Button varient="warning"disabled={filters.page === filters.pages} onClick={() => handlePageChange(1)}>Next</Button>
+     <Button  varient="danger" disabled={filters.page === 1} onClick={() => handlePageChange(-1)}>Prev</Button>   
+     <Button varient="danger"disabled={filters.page === filters.pages} onClick={() => handlePageChange(1)}>Next</Button>
         </div>
         </>
     )

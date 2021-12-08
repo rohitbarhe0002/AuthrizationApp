@@ -6,11 +6,12 @@ import {Table} from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import {Button} from 'react-bootstrap';
 import { paginationOnLocation } from '../actions';
+
 export default function Location() {
-  
-    const {Locations,filters} = useSelector(state => state.locations.location) 
     const dispatch = useDispatch();
-    console.log("hii",Locations)
+    const Locations = useSelector(state => state.locations.location.recordsLocation) 
+    const filters = useSelector(state => state.locations.location.filters)
+    console.log("hii",Locations) 
 
  
 
@@ -20,7 +21,9 @@ export default function Location() {
       };
 
       getRecords();
-    }, [filters.limit, filters.page]);
+
+    },[filters.limit, filters.page]);
+    console.log("filters",filters.limit);
 
     const handleChangeFilter = (event) => {
       const { value, name } = event.target;
@@ -35,7 +38,7 @@ export default function Location() {
   return (
         <div>
 
-<select name="limit" value={filters.limit} onChange={handleChangeFilter}>
+  <select name="limit" value={filters.limit} onChange={handleChangeFilter}>
         <option value={1}>1</option>
         <option value={2}>2</option>
         <option value={1}>1</option>

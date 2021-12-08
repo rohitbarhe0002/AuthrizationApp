@@ -1,22 +1,23 @@
 import { TOKEN } from "../actions";
 
+const getLocalStorage =( )=>{
+  let getToken = localStorage.getItem("token") || "";
+  return getToken;
+
+ }
+
 const initialState = {
-    token:"",
+    token: getLocalStorage(),
    }
-   const getLocalStorage =(token=" ")=>{
-     const data = JSON.stringify(token);
-   
-     console.log(data)
-   }
+ 
    
    export default function Token (state = initialState, action) {
     
      switch (action.type) {
        case TOKEN:
-      const token =[...state.token,action.payload]
-          getLocalStorage(token);
-          return{
-            ...token,
+         return{
+        ...state,
+        token: action.payload,
           }
          default:
        return state;

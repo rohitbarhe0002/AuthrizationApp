@@ -11,8 +11,9 @@ import Routing from './container/Routing'
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-<Routing/>
-    <App/>
+       
+    <Routing/>
+  
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

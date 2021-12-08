@@ -55,7 +55,7 @@ export default function RegistrationForm() {
                     {/* <input type="text" name="Email" value={Email} onChange={InputChange}/>
                     <input type="text" name="password" value={password} onChange={InputChange}/> */}
 
-                    <Button variant="success" type="submit"> signUp </Button>       <Button variant="primary" type="submit"> Login </Button>
+                    <Button variant="success" type="submit"> signUp </Button>      
                 </Form>
             </div>
         </div>

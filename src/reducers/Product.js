@@ -16,19 +16,14 @@ export default function Product (state = initialState, action) {
          //console.log("devendra",action.payload);
               return {
                 ...state,
-                Product: {
+                product: {
                   ...state.product,
                   ...action.payload,
                 }
               };
               case SET_PAGINATION:
               return {
-                  // product: {
-                  //   ...state.product,
-                  //   filters: {
-                  //     ...state.product.filters,
-                  //     ...action.payload,
-
+           
                   ...state,
                   product:{
                     ...state.product,

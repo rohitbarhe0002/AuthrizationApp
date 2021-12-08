@@ -7,7 +7,6 @@ export const setdata = (payload) => ({ type: SET_DATA, payload });
 export const TOKEN = 'TOKEN';
 export const setToken = (payload) => ({ type: TOKEN, payload });
 
-
 export const GET_PRODUCT = 'GET_PRODUCT';
 export const getproduct = (payload) => ({type:GET_PRODUCT,payload});
 

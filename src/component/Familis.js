@@ -15,6 +15,7 @@ export default function Familis() {
 
   return (
         <div>
+    
             <h1>Familis List</h1>
           
             <Table striped bordered hover>
